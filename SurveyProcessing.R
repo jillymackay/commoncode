@@ -9,7 +9,7 @@ dat <- tibble(x1 = c(1,2,1,0,1),
               x2 = c(0,1,2,0,1))
 
 dat %>%
-  mutate_at(vars(x1, x2), factor) %>% 
+  mutate_at(vars(x1, x2), factor, levels = levs) %>% 
   mutate_at(vars(x1, x2), list(~fct_recode(., !!!levs)))
 
 
