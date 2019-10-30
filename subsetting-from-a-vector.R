@@ -15,4 +15,14 @@ vec_of_wants <- key_data %>%
   filter(criteria == "want") %>% 
   pull(colnames)
 
-subset_dat <- dat[, vec_of_wants]
+# try select_at()
+subset_dat <- dat %>% 
+  select_at(vec_of_wants)
+
+subset_dat
+
+# what if no matches - i.e. vec_of_wants empty?
+subset_dat <- dat %>% 
+  select_at(character(0))
+
+subset_dat
