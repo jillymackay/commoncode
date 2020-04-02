@@ -11,7 +11,7 @@ library(likert)
 
 
 dat <- tibble (grp = c("A","B","A","B","A","B"),
-              x1 = c("z", "x", "x", "z", "x", "z"),
+              x1 = c("z", "x", "x", "z", NA, "z"),
               x2 = c("y", "x", "z", "y", "z", "z"),
               y1 = c("Y", "X", "Y", "Z", "Z", "Z")) 
 
@@ -29,7 +29,8 @@ dat2 <- dat %>%
   mutate_at (.vars = vars (x1:x2),
              parse_factor, levels = c("x",
                                       "y",
-                                      "z")) %>% 
+                                      "z",
+                                     NA)) %>% 
   mutate_at (.vars = vars(y1),
              parse_factor, levels = c("X",
                                       "Y",
@@ -44,4 +45,5 @@ d2likert2 <- likert (items = dat2[,4, drop = FALSE], grouping = dat2[,1])
 
 plot(d2likert1)
 plot(d2likert2)
+
 
