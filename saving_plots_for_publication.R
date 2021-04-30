@@ -6,6 +6,8 @@ library(ggplot2)
 # DPI (printer dots per inch) and dimensions interact
 # So if your chart looks awful and squished - bump up one or the other
 
+# Specify the tiff - run your chart - then dev.off()
+
 
 
 tiff("fig1.tiff", units="px", width=3000, height=2000, res=300)
