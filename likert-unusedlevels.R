@@ -1,6 +1,7 @@
 
 # a tidyverse approach to solving the 
 # 'unused levels' error in the likert package
+# `factor` from base works better than `parse_factor` when combined with mutate_at. It also doesn't convert NA to character
 
 # See:  https://github.com/jbryer/likert/blob/master/demo/UnusedLevels.R#L6
 
@@ -27,14 +28,13 @@ dlikert2 <- likert (items = dat[,4, drop = FALSE], grouping = dat[,1])
 
 dat2 <- dat %>% 
   mutate_at (.vars = vars (x1:x2),
-             parse_factor, levels = c("x",
+             .funs = funs(factor(., levels = c("x",
                                       "y",
-                                      "z",
-                                     NA)) %>% 
+                                      "z")))) %>% 
   mutate_at (.vars = vars(y1),
-             parse_factor, levels = c("X",
-                                      "Y",
-                                      "Z"))
+             .funs = funs(factor(., levels = c("X",
+                                               "Y",
+                                               "Z"))
 
 dat2 <- as.data.frame(dat2)
 
