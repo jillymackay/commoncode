@@ -27,14 +27,14 @@ dlikert2 <- likert (items = dat[,4, drop = FALSE], grouping = dat[,1])
 # The Solution:
 
 dat2 <- dat %>% 
-  mutate_at (.vars = vars (x1:x2),
+  mutate_at (.vars = vars (x1:x2), 
              .funs = funs(factor(., levels = c("x",
-                                      "y",
-                                      "z")))) %>% 
-  mutate_at (.vars = vars(y1),
-             .funs = funs(factor(., levels = c("X",
-                                               "Y",
-                                               "Z"))
+                                               "y",
+                                               "z"))))  %>% 
+  mutate_at (.vars = vars(y1), 
+             .funs = funs(factor(., levels = c("X", 
+                                               "Y", 
+                                               "Z"))))
 
 dat2 <- as.data.frame(dat2)
 
