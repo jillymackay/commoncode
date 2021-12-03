@@ -47,3 +47,5 @@ plot(d2likert1)
 plot(d2likert2)
 
 
+
+# Note - you must use as.data.frame() NOT as_data_frame() for reasons that escape me
