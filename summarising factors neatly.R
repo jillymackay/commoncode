@@ -3,14 +3,14 @@
 
 
 
-factor_sum <- function(factor_name) {
+factor_sum <- function(factor_name, perc_round = 2) {
   
   x <-table(factor_name) %>% 
     as.data.frame()
   
   xx <- prop.table(table(factor_name)) %>% 
     as.data.frame() %>% 
-    mutate(Perc = round((Freq*100),2)) %>% 
+    mutate(Perc = round((Freq*100), perc_round)) %>% 
     select(-Freq)
   
   xxx <- full_join(x,xx)
@@ -21,6 +21,6 @@ factor_sum <- function(factor_name) {
   
 }
 
-factor_sum(mpg$manufacturer)
+factor_sum(mpg$manufacturer, 3)
 
 
