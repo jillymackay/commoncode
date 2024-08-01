@@ -17,7 +17,7 @@ kruskal.test(mpg ~ gear, data= mtcars)
 
 # Create a list of the variables in the order they need to be run. 
 vbls <- list(response = rep(c("hp", "disp", "mpg"), each = 2),
-             explanatory = rep(c("cyl", "gear"), 3))
+             explanatory = rep(c("cyl", "gear"), times = 3))
 
 
 
